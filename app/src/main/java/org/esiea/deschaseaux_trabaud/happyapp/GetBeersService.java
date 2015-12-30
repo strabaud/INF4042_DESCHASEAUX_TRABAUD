@@ -61,11 +61,11 @@ public class GetBeersService extends IntentService {
      * Handle action Foo in the provided background thread with the provided
      * parameters.
      */
-    private void handleActionGetAllBeers() {
+    public void handleActionGetAllBeers() throws exception{
         // TODO: This function gets all beers
         throw new UnsupportedOperationException("Houston we've got a problem...");
 
-        Log.d(TAG, "Thread service name:" + Thread.currentThread().getName());
+        Log.d("Launching thread", "Thread service name:" + Thread.currentThread().getName());
         URL url = null;
         try {
             url = new URL("http://binouze.fabrigli.fr/bieres.json");
@@ -75,7 +75,7 @@ public class GetBeersService extends IntentService {
             if (HttpURLConnection.HTTP_OK == conn.getResponseCode()){
                 copyInputStreamToFile(conn.getInputStream(),
                         new File(getCacheDir(), "bieres.json"));
-                Log.d(TAG, "Bieres json Downloaded !");
+                Log.d("bieres DL", "Bieres json Downloaded !");
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
